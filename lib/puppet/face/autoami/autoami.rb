@@ -26,7 +26,7 @@ Puppet::Face.define :autoami, '0.0.1' do
   action :run do
     summary 'Begin an autoami run'
 
-    when_invoked do
+    when_invoked do |options|
       Puppet::CloudPack.load_ami_groups
     end
   end
@@ -34,7 +34,7 @@ Puppet::Face.define :autoami, '0.0.1' do
   action :list do
     summary 'List active instances'
 
-    when_invoked do
+    when_invoked do |options|
       Puppet::CloudPack.current_instances
     end
 
@@ -46,7 +46,7 @@ Puppet::Face.define :autoami, '0.0.1' do
   action :groups do
     summary 'List autoami groups'
 
-    when_invoked do
+    when_invoked do |options|
       Puppet::CloudPack.groups
     end
 
