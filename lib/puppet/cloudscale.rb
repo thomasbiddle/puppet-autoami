@@ -135,7 +135,7 @@ module Puppet::CloudPack
       end
 
       groups_hash.each do |agroup,props|
-        launch_instance agroup, props
+        server = launch_instance(agroup, props)
 
         Puppet.info 'Running puppet agent'
         command_prefix = props[:login] == 'root' ? '' : 'sudo '
@@ -161,7 +161,7 @@ module Puppet::CloudPack
         :enc_auth_passwd => props[:enc_pass],
         :enc_port      => props[:enc_port],
         :enc_server    => props[:enc_server],
-        :enc_ssl       => true,
+        #:enc_ssl       => true,
         :puppetagent_certname => server,
         :node_group => props[:node_group] }
       )
